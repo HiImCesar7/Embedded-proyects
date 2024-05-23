@@ -1,0 +1,101 @@
+
+#ifndef DCAN_CONFIG_H_
+#define DCAN_CONFIG_H_
+
+/* system headers */
+#include "Std_Types.h"
+/* used headers */
+#include "DIOCFG_cfg.h"
+
+/* own headers */
+
+/*****************************************************************************/
+
+/* exported pre-procesor macros */
+
+/************************************************************************************
+ * Bit Timming
+ ************************************************************************************/
+
+typedef struct
+{
+	uint8	u8Phase_Seg2;
+	uint8	u8Phase_Seg1;
+	uint8	u8Prop_Seg;
+	uint8	u8SJW;
+	uint8	u8BRP;
+	uint8	u8BRPE;
+} DCAN__tstBitRateRegisterDefinition;
+
+#define DCAN_BAUDRATE_1M_cfg	{1, 1, 7, 1, 7,  0}
+#define DCAN_BAUDRATE_500k_cfg	{2, 2, 3, 2, 19, 0}
+#define DCAN_BAUDRATE_250k_cfg	{6, 6, 3, 2, 19, 0}
+#define DCAN_BAUDRATE_125k_cfg	{3, 3, 1, 3, 15, 1}
+
+typedef struct
+{
+	uint16 u16Signal;
+	uint8 u8Level;
+} __tstSignalLogicLevel;
+
+typedef struct
+{
+	__tstSignalLogicLevel stEN;
+	__tstSignalLogicLevel stSTB;
+	__tstSignalLogicLevel stWake;
+	__tstSignalLogicLevel stError;
+} __tstCANStandbySignal;
+
+#define DCAN_DEVICE_BAUDRATE_cfg	\
+{	\
+	DCAN_BAUDRATE_1M_cfg,	/* DCAN_enCANA Baudrate */\
+	DCAN_BAUDRATE_500k_cfg,	/* DCAN_enCANC Baudrate */\
+	DCAN_BAUDRATE_250k_cfg,	/* DCAN_enCAND Baudrate */\
+	DCAN_BAUDRATE_1M_cfg,	/* DCAN_enTotalDevices Default Baudrate */\
+}
+
+/************************************************************************************
+ * ISR Handlers
+ ************************************************************************************/
+
+#define DCAN__CALLBACKS_TABLE_cfg	\
+{\
+	DCAN_vReceivedMessagesISR,	/** Callback for CAN1 */ \
+	DCAN_vReceivedMessagesISR,	/** Callback for CAN2 */ \
+	DCAN_vReceivedMessagesISR	/** Callback for CAN3 */ \
+}
+
+
+#define DCAN_STANDBY_GPIO_cfg					\
+{												\
+	{											\
+		{DIOCFG_enCAN_A_EN,  STD_HIGH},	\
+		{DIOCFG_enCAN_A_STB, STD_LOW},		\
+		{DIOCFG_enCAN_A_WAKE,STD_HIGH},	\
+		/*{DIOCFG_enCAN_A_ERR, STD_HIGH},*/	\
+	}, /* DCAN_enCANA Standby GPIO Pin */ 		\
+	{											\
+		{NULL, 0},									\
+		{NULL, 0},	\
+		{NULL, 0},									\
+		{NULL, 0},									\
+	}, /* DCAN_enCANC Standby GPIO Pin */ 		\
+	{											\
+		{NULL, 0},	\
+		{NULL, 0},		\
+		{NULL, 0},	\
+		{NULL, 0},	\
+	}, /* DCAN_enCAND Standby GPIO Pin */ 		\
+}
+
+/* exported types */
+
+
+
+
+/* exported variables */
+
+/* exported functions */
+
+
+#endif /* DCAN_CONFIG_H_ */
