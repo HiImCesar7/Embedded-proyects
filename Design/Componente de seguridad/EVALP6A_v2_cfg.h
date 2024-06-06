@@ -1,33 +1,3 @@
-/**
- * @copyright
- * This document is a part of the source code and related artifacts
- * for Modutram Autotrén transportation system
- *
- * http://www.modutram.com
- *
- * Copyright © 2021 Modutram
- *
- * Any use of this source code - including reproduction, modification, distribution, 
- * republication, transmission, re-transmission, modification, or public showing - without the prior 
- * written permission of Modutram is strictly prohibited. 
- *
- * @file    SIS_MSF088_EVALP6A_cfg.h
- *
- * @brief   MSF088 -- SIL4 -- Configuración: Determina el estado lógico de las ramas (abierta o cerrada) 
- *                            del SIV actual y las ramas de entrada del SIV siguiente, así 
- *                            como de actualizar el estado de los LEDs ademas de 
- *                            diagnosticar el estado de la llave y del boton de 
- *                            confirmación   
- * @note
- *        ______________      ______________      ______________
- *        Horalia Reyes               TBD_V               TBD_P
- *        Diseñador           Verificador         PM 
- *
- * @version SIS  * - Horalia Reyes -- 02/11/2021 -- No oficial
- *   - Primera Versión
- *     
- */
-
 #ifndef EVALP6A_cfg_H_
 #define EVALP6A_cfg_H_
 
